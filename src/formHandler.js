@@ -52,7 +52,7 @@ state = {
       .send('mailgun', templateId, {
         senderEmail,
         receiverEmail,
-        feedback
+        text:feedback
       })
       .then(res => {
         this.setState({
