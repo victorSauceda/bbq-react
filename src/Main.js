@@ -16,7 +16,11 @@ class Main extends React.Component {
   }
   addToCart(foodObj) {
 
-    this.setState({ cartItems: this.state.cartItems.push(foodObj) });
+    this.setState((prevState) => {
+      const cartItems = [...prevState.cartItems];
+      cartItems.push(foodObj);
+      return { cartItems: cartItems };
+    });
     console.log(this.state.cartItems);
   }
 

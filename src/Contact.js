@@ -19,7 +19,7 @@ class Contact extends Component {
 
         <FormHandler env={this.props.env} />
        
-        <Map google={this.props.google} zoom={10} initialCenter={{
+        <Map google={this.props.google} zoom={10} height='20%' width="200%" initialCenter={{
              lat:47.615403,
           lng:-122.320390
         }} style={style}>
@@ -43,5 +43,5 @@ Contact.propTypes = {
 // export default Contact;
 
 export default GoogleApiWrapper({
-   apiKey: "AIzaSyAnNk5ODJFd9XMSH9_3kIwh1RlqVoWXlXY"
+   apiKey: ""
 })(Contact)

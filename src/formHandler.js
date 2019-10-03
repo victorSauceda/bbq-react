@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 class FormHandler extends React.Component {
 
 state = {
+    username:'',
     feedback: '',
     formSubmitted: false
   };
@@ -17,13 +18,15 @@ state = {
 
   handleCancel() {
     this.setState({
+      username: '',
       feedback: ''
+      
     });
   }
 
   handleChange(event) {
     this.setState({
-      feedback: event.target.value
+      [event.target.name]: event.target.value
     });
   }
 
@@ -39,6 +42,7 @@ state = {
       template,
       this.sender,
       receiverEmail,
+      this.state.username,
       this.state.feedback
     );
 
@@ -47,12 +51,14 @@ state = {
     });
   }
 
-  sendFeedback(templateId, senderEmail, receiverEmail, feedback) {
+  sendFeedback(templateId, senderEmail, receiverEmail,username, feedback) {
     window.emailjs
       .send('mailgun', templateId, {
         senderEmail,
         receiverEmail,
+        username:username,
         text:feedback
+        
       })
       .then(res => {
         this.setState({
@@ -65,24 +71,42 @@ state = {
 
   render() {
     return (
+      <div>
       <form className="feedback-form" onSubmit={this.handleSubmit}>
-        <h1>Your Feedback</h1>
+      
+     <h1>Your Feedback</h1>
+     <div>
+        <input
+        type="text"
+        className="text-input"
+        id="username"
+        name="username"
+        onChange={this.handleChange}
+        placeholder="Enter email"
+        required
+        value={this.state.username}
+        />
+        </div>
         <textarea
+          type='text'
           className="text-input"
           id="feedback-entry"
-          name="feedback-entry"
+          name="feedback"
           onChange={this.handleChange}
           placeholder="Enter your feedback here"
           required
           value={this.state.feedback}
         />
+     
         <div className="btn-group">
           <button className="btn btn--cancel" onClick={this.handleCancel}>
             Cancel
           </button>
           <input type="submit" value="Submit" className="btn btn--submit" />
         </div>
+        
       </form>
+      </div>
     );
   }
 }

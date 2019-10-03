@@ -9,14 +9,7 @@ class Cart extends React.Component {
 
     }
     render() {
-        let cartBuilder = this.props.cart.map((item, i) => {
-            return (
-                <tr key={i}>
-                    <td>{item.name}</td>
-                    <td>{item.price}</td>
-                </tr>
-            )
-        })
+
         return (
             <div>
                 <h2>My Cart</h2>
@@ -28,7 +21,14 @@ class Cart extends React.Component {
                         </tr>
                     </thead>
                     <tbody>
-                        {cartBuilder}
+                        {this.props.cartItems.map((item, i) => {
+                            return (
+                                <tr key={i}>
+                                    <td>{item.name}</td>
+                                    <td>{item.price}</td>
+                                </tr>
+                            )
+                        })}
                     </tbody>
                 </table>
 

@@ -1,11 +1,21 @@
-import React from 'react'
+import React from 'react';
+import MenuItems from './MenuItems';
+import items from './items'
 
-function Menu() {
+class Menu extends React.Component {
+  constructor(props) {
+    super(props)
+
+
+
+  }
+
+  render() {
     return (
-        <div>
-
-      <p>menu page</p>
+      <div>
+        <MenuItems items={items} addToCart={this.props.addToCart} cartItems={this.props.cartItems} />
       </div>
     );
   }
-  export default Menu;
+}
+export default Menu;
