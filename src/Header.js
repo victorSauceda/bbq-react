@@ -3,35 +3,28 @@ import { Link } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css';
 function Header() {
   return (
-    <div>
-      <header>
-        <nav class="navbar navbar-expand-lg navbar-dark primary-color">
-          <a class="navbar-brand" href="#">Navbar</a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNav"></div>
-          <ul class="navbar-nav">
-            <li class="nav-item active">
-              <a class="/" href="/">Vic's BBQ <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="/menu" href="/menu">Menu </a>
-            </li>
-            <li class="nav-item">
-              <a class="/specials" href="/specials">Specials</a>
-            </li>
-            <li class="nav-item">
-              <a class="/contact" href="/contact">Contact Us </a>
-            </li>
-            <li class="nav-item">
-              <Link to="/cart" className="/cart">cart</Link>
-            </li>
-          </ul>
-        </nav>
-      </header>
-    </div>
+
+    <nav className=" navbar navbar-expand-md bg-dark navbar-light">
+      <div className="collapse navbar-collapse" id="navbarNav"></div>
+      <ul className="nav">
+        <li className="nav-item active">
+          <Link to="/" className="/ col-lg-3">Vic's BBQ <span className="sr-only">(current)</span></Link>
+        </li>
+        <li class="nav-item">
+          <Link to="/menu" className="/menu col-lg-4">Menu </Link>
+        </li>
+        <li class="nav-item">
+          <Link to="/specials" className="/specials col-lg-4">Specials</Link>
+        </li>
+        <li class="nav-item">
+          <Link to="/contact" className="/contact col-lg-4">Contact Us </Link>
+        </li>
+        <li class="nav-item">
+          <Link to="/cart" className="/cart col-lg-4">Cart</Link>
+        </li>
+      </ul>
+    </nav>
+
   );
 }
 export default Header;

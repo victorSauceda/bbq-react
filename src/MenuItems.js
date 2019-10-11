@@ -1,23 +1,14 @@
 import React from "react";
+import MenuItem from './MenuItem'
 
 
 export default function MenuItems(props) {
-  let styles = {
-    listStyle: 'none'
-  }
+
   return (
-    <div>
-      {props.items.map((item, i) => {
+    <div className="container">
+      {props.items.map((item, keyIndex) => {
         return (
-          <div key={i}>
-            <h3>{item.name}</h3>
-            <img src={item.img} alt={item.description} heigth="90" width="90" />
-            <ul style={styles}>
-              <li>${item.price}</li>
-              <li>Calories: {item.calories}</li>
-            </ul>
-            <button onClick={() => props.addToCart(item)}>Add to cart</button>
-          </div>
+          <MenuItem item={item} keyIndex={keyIndex} addToCart={props.addToCart} />
         )
       })}
 

@@ -10,15 +10,21 @@ class Main extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      cartItems: []
+      cartItems: [],
+
     };
     this.addToCart = this.addToCart.bind(this);
   }
-  addToCart(foodObj) {
+  addToCart(foodObj, qty) {
 
     this.setState((prevState) => {
       const cartItems = [...prevState.cartItems];
+      foodObj.qty = qty
       cartItems.push(foodObj);
+      console.log(foodObj);
+
+
+
       return { cartItems: cartItems };
     });
     console.log(this.state.cartItems);

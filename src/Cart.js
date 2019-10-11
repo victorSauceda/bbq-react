@@ -1,4 +1,6 @@
 import React from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import CartContent from './CartContent'
 
 
 
@@ -12,26 +14,10 @@ class Cart extends React.Component {
 
         return (
             <div>
-                <h2>My Cart</h2>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Price</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {this.props.cartItems.map((item, i) => {
-                            return (
-                                <tr key={i}>
-                                    <td>{item.name}</td>
-                                    <td>{item.price}</td>
-                                </tr>
-                            )
-                        })}
-                    </tbody>
-                </table>
+                <h2 className="text-center">My Cart</h2>
 
+                {(this.props.cartItems.length > 0) ? <CartContent cartItems={this.props.cartItems} addToCart={this.props.addToCart} /> : <p className="alert alert-danger" role="alert">Cart is currently empty</p>
+                }
             </div>
         );
     }
