@@ -14,6 +14,18 @@ class Main extends React.Component {
 
     };
     this.addToCart = this.addToCart.bind(this);
+    this.updateCartItem = this.updateCartItem.bind(this)
+  }
+  updateCartItem(foodobj, qty) {
+
+
+    this.setState((prevState) => {
+      const cartItems = [...prevState.cartItems]
+
+      const itemToUpdate = cartItems.find(element => foodobj.name === element.name)
+      itemToUpdate.qty = qty
+      return { cartItems: cartItems }
+    })
   }
   addToCart(foodObj, qty) {
 
@@ -41,7 +53,7 @@ class Main extends React.Component {
             <Contact env={this.props.env} />
           </Route>
           <Route path="/cart">
-            <Cart addToCart={this.addToCart} cartItems={this.state.cartItems} />
+            <Cart addToCart={this.addToCart} cartItems={this.state.cartItems} updateCartItem={this.updateCartItem} />
           </Route>
           />
         </Switch>
