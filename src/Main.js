@@ -14,16 +14,27 @@ class Main extends React.Component {
 
     };
     this.addToCart = this.addToCart.bind(this);
-    this.updateCartItem = this.updateCartItem.bind(this)
+    this.updateCartItem = this.updateCartItem.bind(this);
+    this.removingCartItem = this.removingCartItem.bind(this);
   }
   updateCartItem(foodobj, qty) {
+
+    removingCartItem(foodobj) {
+      console.log(foodobj)
+      this.setState((prevState) => {
+        const cartItems = [...prevState.cartItems];
+        let newCart = cartItems.filter(item => item.name !== foodobj.name);
+
+        return { cartItems: newCart };
+      })
+    }
 
 
     this.setState((prevState) => {
       const cartItems = [...prevState.cartItems]
 
-      const itemToUpdate = cartItems.find(element => foodobj.name === element.name)
-      itemToUpdate.qty = qty
+      const itemToUpdate = cartItems.find(element => foodobj.name === element.name);
+      itemToUpdate.qty = qty;
       return { cartItems: cartItems }
     })
   }
@@ -53,7 +64,7 @@ class Main extends React.Component {
             <Contact env={this.props.env} />
           </Route>
           <Route path="/cart">
-            <Cart addToCart={this.addToCart} cartItems={this.state.cartItems} updateCartItem={this.updateCartItem} />
+            <Cart addToCart={this.addToCart} cartItems={this.state.cartItems} updateCartItem={this.updateCartItem} removingCartItem={this.removingCartItem} />
           </Route>
           />
         </Switch>

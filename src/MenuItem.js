@@ -22,7 +22,7 @@ class MenuItem extends React.Component {
         const { item } = this.props
         return (
             <div>
-                <div className="row" key={this.props.keyIndex}>
+                <div className="row" >
                     <h6 className='col-2'>{item.name}</h6>
                     <img className='col-2' src={item.img} alt={item.description} heigth="90" width="90" />
                     <ul >

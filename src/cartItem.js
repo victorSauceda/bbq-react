@@ -4,7 +4,8 @@ class CartItem extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            quantity: props.item.qty
+            quantity: props.item.qty,
+            removingCartItem: false
         }
         this.handleChange = this.handleChange.bind(this)
     }
@@ -15,14 +16,21 @@ class CartItem extends React.Component {
         })
 
     }
+    handleRemove = (event) => {
+        this.setState({
+            removingCartItem: true
+        })
+    }
 
     render() {
+
         const { item } = this.props
         return (
 
 
 
-            <tr key={this.props.keyIndex}>
+            <tr>
+
                 <td>{item.name}</td>
                 <td>{item.price}</td>
                 <td>{item.qty}        <select value={this.state.quantity} onChange={this.handleChange} >
@@ -38,7 +46,8 @@ class CartItem extends React.Component {
                     <option value='10'>10</option>
 
                 </select>
-                    <button onClick={() => this.props.updateCartItem(item, this.state.quantity)}>change qty</button></td>
+                    <button onClick={() => this.props.updateCartItem(item, this.state.quantity)}>change qty</button>
+                    <button onClick={() => this.props.removingCartItem(item)}>Remove Item</button></td>
                 <td>{item.price * item.qty}
                 </td>
             </tr>

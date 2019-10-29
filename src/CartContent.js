@@ -26,7 +26,7 @@ class CartContent extends React.Component {
                     <tbody>
                         {this.props.cartItems.map((item, keyIndex) => {
                             return (
-                                <CartItem keyIndex={keyIndex} addToCart={this.props.addToCart} updateCartItem={this.props.updateCartItem} item={item} />
+                                <CartItem key={keyIndex} addToCart={this.props.addToCart} updateCartItem={this.props.updateCartItem} removingCartItem={this.props.removingCartItem} item={item} />
                             )
                         })}
 

@@ -8,7 +8,7 @@ export default function MenuItems(props) {
     <div className="container">
       {props.items.map((item, keyIndex) => {
         return (
-          <MenuItem item={item} keyIndex={keyIndex} addToCart={props.addToCart} />
+          <MenuItem item={item} key={keyIndex} addToCart={props.addToCart} />
         )
       })}
 
