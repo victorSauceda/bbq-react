@@ -19,25 +19,29 @@ class Main extends React.Component {
   }
   updateCartItem(foodobj, qty) {
 
-    removingCartItem(foodobj) {
-      console.log(foodobj)
-      this.setState((prevState) => {
-        const cartItems = [...prevState.cartItems];
-        let newCart = cartItems.filter(item => item.name !== foodobj.name);
-
-        return { cartItems: newCart };
-      })
-    }
-
 
     this.setState((prevState) => {
       const cartItems = [...prevState.cartItems]
 
-      const itemToUpdate = cartItems.find(element => foodobj.name === element.name);
-      itemToUpdate.qty = qty;
+      const itemToUpdate = cartItems.find(element => foodobj.name === element.name)
+      itemToUpdate.qty = qty
       return { cartItems: cartItems }
     })
   }
+
+
+  removingCartItem(foodobj) {
+    console.log(foodobj)
+    this.setState((prevState) => {
+      const cartItems = [...prevState.cartItems];
+      let newCart = cartItems.filter(item => item.name !== foodobj.name);
+
+      return { cartItems: newCart };
+    })
+  }
+
+
+
   addToCart(foodObj, qty) {
 
     this.setState((prevState) => {
