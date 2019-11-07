@@ -4,6 +4,7 @@ import Home from "./Home";
 import Menu from "./Menu";
 import Contact from "./Contact";
 import Specials from "./Specials.js";
+import Sandbox from './sandbox'
 import Cart from "./Cart";
 
 class Main extends React.Component {
@@ -19,25 +20,29 @@ class Main extends React.Component {
   }
   updateCartItem(foodobj, qty) {
 
-    removingCartItem(foodobj) {
-      console.log(foodobj)
-      this.setState((prevState) => {
-        const cartItems = [...prevState.cartItems];
-        let newCart = cartItems.filter(item => item.name !== foodobj.name);
-
-        return { cartItems: newCart };
-      })
-    }
-
 
     this.setState((prevState) => {
       const cartItems = [...prevState.cartItems]
 
-      const itemToUpdate = cartItems.find(element => foodobj.name === element.name);
-      itemToUpdate.qty = qty;
+      const itemToUpdate = cartItems.find(element => foodobj.name === element.name)
+      itemToUpdate.qty = qty
       return { cartItems: cartItems }
     })
   }
+
+
+  removingCartItem(foodobj) {
+    console.log(foodobj)
+    this.setState((prevState) => {
+      const cartItems = [...prevState.cartItems];
+      let newCart = cartItems.filter(item => item.name !== foodobj.name);
+
+      return { cartItems: newCart };
+    })
+  }
+
+
+
   addToCart(foodObj, qty) {
 
     this.setState((prevState) => {
@@ -66,7 +71,7 @@ class Main extends React.Component {
           <Route path="/cart">
             <Cart addToCart={this.addToCart} cartItems={this.state.cartItems} updateCartItem={this.updateCartItem} removingCartItem={this.removingCartItem} />
           </Route>
-          />
+          <Route path="/sandbox" exact component={Sandbox}></Route>
         </Switch>
       </main>
     );
