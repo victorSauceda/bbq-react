@@ -4,6 +4,7 @@ import Home from "./Home";
 import Menu from "./Menu";
 import Contact from "./Contact";
 import Specials from "./Specials.js";
+import Sandbox from './sandbox'
 import Cart from "./Cart";
 
 class Main extends React.Component {
@@ -70,7 +71,7 @@ class Main extends React.Component {
           <Route path="/cart">
             <Cart addToCart={this.addToCart} cartItems={this.state.cartItems} updateCartItem={this.updateCartItem} removingCartItem={this.removingCartItem} />
           </Route>
-          />
+          <Route path="/sandbox" exact component={Sandbox}></Route>
         </Switch>
       </main>
     );
