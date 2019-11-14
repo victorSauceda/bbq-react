@@ -18,30 +18,25 @@ class Main extends React.Component {
     this.updateCartItem = this.updateCartItem.bind(this);
     this.removingCartItem = this.removingCartItem.bind(this);
   }
+
   updateCartItem(foodobj, qty) {
-
-
     this.setState((prevState) => {
       const cartItems = [...prevState.cartItems]
 
-      const itemToUpdate = cartItems.find(element => foodobj.name === element.name)
-      itemToUpdate.qty = qty
+      const itemToUpdate = cartItems.find(element => foodobj.name === element.name);
+      itemToUpdate.qty = qty;
       return { cartItems: cartItems }
     })
   }
-
 
   removingCartItem(foodobj) {
     console.log(foodobj)
     this.setState((prevState) => {
       const cartItems = [...prevState.cartItems];
       let newCart = cartItems.filter(item => item.name !== foodobj.name);
-
       return { cartItems: newCart };
     })
   }
-
-
 
   addToCart(foodObj, qty) {
 
@@ -49,16 +44,14 @@ class Main extends React.Component {
       const cartItems = [...prevState.cartItems];
       foodObj.qty = qty
       cartItems.push(foodObj);
-      console.log(foodObj);
-
-
+      console.log('New Cart: ', cartItems)
 
       return { cartItems: cartItems };
     });
-    console.log(this.state.cartItems);
   }
 
   render() {
+    console.log('Render CartItems: ', this.state.cartItems)
     return (
       <main>
         <Switch>
