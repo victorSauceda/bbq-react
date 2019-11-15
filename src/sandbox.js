@@ -2,7 +2,7 @@ import React from "react";
 import { ConsoleLogger } from "@aws-amplify/core";
 import { API } from "aws-amplify";
 import { async } from "q";
-import { Form, Button } from "react-bootstrap";
+import { Form, Button, Container } from "react-bootstrap";
 
 export default class Sandbox extends React.Component {
   constructor(props) {
@@ -53,83 +53,85 @@ export default class Sandbox extends React.Component {
       marginTop: "45px"
     };
     return (
-      <Form
-        className="feedback-form"
-        style={style}
-        onSubmit={this.handleSubmit}
-      >
-        <h1 className="text-center">Add items to the Menu</h1>
-        <Form.Group controlId="exampleForm.ControlInput1">
-          <Form.Label>Name</Form.Label>
-          <Form.Control
-            type="text"
-            placeholder="name@example.com"
-            name="name"
-            onChange={this.handleChange}
-            required
-            value={this.state.name}
-          />
-        </Form.Group>
-        <Form.Group controlId="exampleForm.ControlInput1">
-          <Form.Label>Description</Form.Label>
-          <Form.Control
-            type="text"
-            placeholder="please add a description of the item"
-            name="description"
-            onChange={this.handleChange}
-            required
-            value={this.state.description}
-          />
-        </Form.Group>
-        <Form.Group controlId="exampleForm.ControlInput1">
-          <Form.Label>Image Source</Form.Label>
-          <Form.Control
-            type="text"
-            placeholder="path for the image to be displayed"
-            name="imgSrc"
-            onChange={this.handleChange}
-            required
-            value={this.state.imgSrc}
-          />
-        </Form.Group>
-        <Form.Group controlId="exampleForm.ControlInput1">
-          <Form.Label>Alternate Text</Form.Label>
-          <Form.Control
-            type="text"
-            placeholder="alternate text to display in for screen readers"
-            name="alt"
-            onChange={this.handleChange}
-            required
-            value={this.state.alt}
-          />
-        </Form.Group>
-        <Form.Group controlId="exampleForm.ControlInput1">
-          <Form.Label>Price</Form.Label>
-          <Form.Control
-            type="text"
-            placeholder="How much are you going to sell this product for"
-            name="price"
-            onChange={this.handleChange}
-            required
-            value={this.state.price}
-          />
-        </Form.Group>
-        <Form.Group controlId="exampleForm.ControlInput1">
-          <Form.Label>In Stock</Form.Label>
-          <Form.Control
-            type="text"
-            placeholder="How many items are in stock"
-            name="inStock"
-            onChange={this.handleChange}
-            required
-            value={this.state.inStock}
-          />
-        </Form.Group>
-        <Button type="submit" block>
-          Submit
-        </Button>
-      </Form>
+      <Container>
+        <Form
+          className="feedback-form"
+          style={style}
+          onSubmit={this.handleSubmit}
+        >
+          <h1 className="text-center">Add items to the Menu</h1>
 
+          <Form.Group controlId="exampleForm.ControlInput1">
+            <Form.Label>Name</Form.Label>
+            <Form.Control
+              type="text"
+              placeholder="name@example.com"
+              name="name"
+              onChange={this.handleChange}
+              required
+              value={this.state.name}
+            />
+          </Form.Group>
+          <Form.Group controlId="exampleForm.ControlInput1">
+            <Form.Label>Description</Form.Label>
+            <Form.Control
+              type="text"
+              placeholder="please add a description of the item"
+              name="description"
+              onChange={this.handleChange}
+              required
+              value={this.state.description}
+            />
+          </Form.Group>
+          <Form.Group controlId="exampleForm.ControlInput1">
+            <Form.Label>Image Source</Form.Label>
+            <Form.Control
+              type="text"
+              placeholder="path for the image to be displayed"
+              name="imgSrc"
+              onChange={this.handleChange}
+              required
+              value={this.state.imgSrc}
+            />
+          </Form.Group>
+          <Form.Group controlId="exampleForm.ControlInput1">
+            <Form.Label>Alternate Text</Form.Label>
+            <Form.Control
+              type="text"
+              placeholder="alternate text to display in for screen readers"
+              name="alt"
+              onChange={this.handleChange}
+              required
+              value={this.state.alt}
+            />
+          </Form.Group>
+          <Form.Group controlId="exampleForm.ControlInput1">
+            <Form.Label>Price</Form.Label>
+            <Form.Control
+              type="text"
+              placeholder="How much are you going to sell this product for"
+              name="price"
+              onChange={this.handleChange}
+              required
+              value={this.state.price}
+            />
+          </Form.Group>
+          <Form.Group controlId="exampleForm.ControlInput1">
+            <Form.Label>In Stock</Form.Label>
+            <Form.Control
+              type="text"
+              placeholder="How many items are in stock"
+              name="inStock"
+              onChange={this.handleChange}
+              required
+              value={this.state.inStock}
+            />
+          </Form.Group>
+          <Button type="submit" block>
+            Submit
+          </Button>
+        </Form>
+      </Container>
       //   <input
       //     type="text"
       //     className="text-input"

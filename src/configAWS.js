@@ -7,6 +7,7 @@ export default {
     REGION: "us-east-1",
     URL: "https://z9scqd7r37.execute-api.us-east-1.amazonaws.com/dev"
   },
+  STRIPE_KEY: "sk_test_pLeLwpLLX7IGrqg8Uqs997Rm00senAhVat"
   // cognito: {
   //   REGION: "us-east-1",
   //   USER_POOL_ID: "YOUR_COGNITO_USER_POOL_ID",
@@ -14,4 +15,3 @@ export default {
   //   IDENTITY_POOL_ID: "YOUR_IDENTITY_POOL_ID"
   // }
 };
-
