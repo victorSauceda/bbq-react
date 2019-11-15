@@ -1,0 +1,11 @@
+body,
+html {
+  height: 100%;
+}
+.bg {
+  background-image: url("https://image.shutterstock.com/z/stock-photo-empty-flaming-charcoal-grill-with-open-fire-ready-for-product-placement-concept-of-summer-624646259.jpg");
+  height: 100vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}

@@ -9,73 +9,66 @@ import PropTypes from "prop-types";
 class Contact extends Component {
   render() {
     const style = {
+      marginLeft: ".5rem",
+      marginRight: "5rem",
+
       width: "100%",
-      height: "200px",
-      marginTop: "45px"
+      height: "200px"
     };
     console.log(this.props);
     return (
-      <div className="Contact" style={{ width: "100%" }}>
-        <h1 className="text-center" style={{ marginTop: "45px" }}>
-          Contact Us
-        </h1>
+      <div style={{ marginLeft: "1.5rem", marginRight: "1.5rem" }}>
         <Row>
-          <Col
-            xs={12}
-            sm={4}
-            md={4}
-            className="ml-3 mr-3"
-            style={{ width: "50%" }}
-          >
-            <FormHandler env={this.props.env} />
-          </Col>
-          <Col xs={12} sm={4} md={4}>
-            <Row>
-              <Col xs={12} md={12}>
-                <Map
-                  google={this.props.google}
-                  zoom={10}
-                  style={{ width: "100%", height: "auto" }}
-                  height="200%"
-                  width="200%"
-                  initialCenter={{
-                    lat: 47.615403,
-                    lng: -122.32039
-                  }}
-                  style={style}
-                >
-                  <Marker
-                    style={{ width: "100%" }}
-                    onClick={this.onMarkerClick}
-                    name={"Current location"}
-                  />
-
-                  {/* <InfoWindow onClose={this.onInfoWindowClose}>
-
- </InfoWindow> */}
-                </Map>
-              </Col>
-            </Row>
-            <Row style={{ marginTop: "18rem", width: "100%" }}>
-              <Col xs={12} md={4} className="ml-2">
-                <h1 className="blue text-center">Phone</h1>
-                <p className="blue text-center">206.123.1234</p>
-              </Col>
-              <Col xs={12} sm={6} md={4}>
-                <h1>Location</h1>
-                <p>Unloop Studios</p>
-                <p>900 East Pike Street</p>
-                <p>Seattle, WA 98104</p>
-              </Col>
-              <Col className="mr-2" xs={12} md={4}>
-                <h1 className="blue text-right">Email</h1>
-                <p className="blue text-right">unloop@unloop.com </p>
-              </Col>
-            </Row>
+          <Col>
+            <h1 className="text-center" style={{ marginTop: "45px" }}>
+              Contact Us
+            </h1>
           </Col>
         </Row>
+        <Row>
+          <Col xs={12} sm={6} md={6}>
+            <FormHandler env={this.props.env} />
+          </Col>
 
-        <div></div>
+          <Col xs={12} sm={6} md={6} style={{ marginTop: "20px" }}>
+            {/* <Container fluid> */}
+            <Row sm={12}>
+              <Map
+                google={this.props.google}
+                zoom={10}
+                initialCenter={{
+                  lat: 47.615403,
+                  lng: -122.32039
+                }}
+                style={style}
+              >
+                <Marker
+                  style={{ width: "60%" }}
+                  onClick={this.onMarkerClick}
+                  name={"Current location"}
+                />
+              </Map>
+            </Row>
+
+            <Row style={{ marginTop: "250px" }}>
+              <Col xs={12} sm={4} md={4}>
+                <h1 className="text-center">Phone</h1>
+                <p className="text-center">206.123.1234</p>
+              </Col>
+              <Col xs={12} sm={4} md={4}>
+                <h1 className="text-center">Location</h1>
+                <p className="text-center">Unloop Studios</p>
+                <p className="text-center">900 East Pike Street</p>
+                <p className="text-center">Seattle, WA 98104</p>
+              </Col>
+              <Col xs={12} sm={4} md={4}>
+                <h1 className="text-center">Email</h1>
+                <p className="text-center">unloop@unloop.com </p>
+              </Col>
+            </Row>
+            {/* </Container> */}
+          </Col>
+        </Row>
       </div>
     );
   }
@@ -90,3 +83,6 @@ Contact.propTypes = {
 export default GoogleApiWrapper({
   apiKey: ""
 })(Contact);
+
+
+  
