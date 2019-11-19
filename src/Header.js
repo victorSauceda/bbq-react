@@ -1,8 +1,27 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link, withRouter } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Nav, Navbar, NavItem, Card } from "react-bootstrap";
-function Header() {
+import { Auth } from "aws-amplify";
+function Header(props) {
+  useEffect(() => {
+    onLoad();
+  }, []);
+
+  async function onLoad() {
+    try {
+      await Auth.currentSession();
+      props.appProps.setIsAuthenticated(true);
+    } catch (e) {
+      if (e !== "No current user") {
+        alert(e);
+      }
+    }
+
+    props.appProps.setIsAuthenticating(false);
+  }
+
+  console.log(props.appProps.isAuthenticated);
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
       <Navbar.Brand href="/">
@@ -24,8 +43,20 @@ function Header() {
             <Link to="./sandbox">Admin</Link>
           </Nav.Link>
         </Nav>
+        {props.appProps.isAuthenticated ? (
+          <Nav.Link onClick={props.handleLogout}>Logout</Nav.Link>
+        ) : (
+          <>
+            <Nav.Link href="/login">
+              <Link to="./login">Signup</Link>
+            </Nav.Link>
+            <Nav.Link href="/login">
+              <Link to="./login">Login</Link>
+            </Nav.Link>
+          </>
+        )}
       </Navbar.Collapse>
     </Navbar>
   );
 }
-export default Header;
+export default withRouter(Header);

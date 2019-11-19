@@ -1,18 +1,20 @@
 import React from "react";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Link } from "react-router-dom";
 import Home from "./Home";
 import Menu from "./Menu";
 import Contact from "./Contact";
 import Specials from "./Specials.js";
-import Sandbox from './sandbox'
+import Sandbox from "./sandbox";
 import Cart from "./Cart";
+import Login from "./containers/Login";
+import AppliedRoute from "./components/AppliedRoute";
+import { NavItem } from "react-bootstrap";
 
 class Main extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      cartItems: [],
-
+      cartItems: []
     };
     this.addToCart = this.addToCart.bind(this);
     this.updateCartItem = this.updateCartItem.bind(this);
@@ -20,51 +22,87 @@ class Main extends React.Component {
   }
 
   updateCartItem(foodobj, qty) {
-    this.setState((prevState) => {
-      const cartItems = [...prevState.cartItems]
+    this.setState(prevState => {
+      const cartItems = [...prevState.cartItems];
 
-      const itemToUpdate = cartItems.find(element => foodobj.name === element.name);
+      const itemToUpdate = cartItems.find(
+        element => foodobj.name === element.name
+      );
       itemToUpdate.qty = qty;
-      return { cartItems: cartItems }
-    })
+      return { cartItems: cartItems };
+    });
   }
 
   removingCartItem(foodobj) {
-    console.log(foodobj)
-    this.setState((prevState) => {
+    console.log(foodobj);
+    this.setState(prevState => {
       const cartItems = [...prevState.cartItems];
       let newCart = cartItems.filter(item => item.name !== foodobj.name);
       return { cartItems: newCart };
-    })
+    });
   }
 
   addToCart(foodObj, qty) {
-
-    this.setState((prevState) => {
+    this.setState(prevState => {
       const cartItems = [...prevState.cartItems];
-      foodObj.qty = qty
+      foodObj.qty = qty;
       cartItems.push(foodObj);
-      console.log('New Cart: ', cartItems)
+      console.log("New Cart: ", cartItems);
 
       return { cartItems: cartItems };
     });
   }
 
   render() {
-    console.log('Render CartItems: ', this.state.cartItems)
+    console.log("Render CartItems: ", this.state.cartItems);
     return (
       <main>
         <Switch>
-          <Route exact path="/" component={Home} />
-          <Route path="/menu" ><Menu addToCart={this.addToCart} /></Route>
-          <Route path="/specials" component={Specials} />
-          <Route path="/contact">
-            <Contact env={this.props.env} />
-          </Route>
-          <Route path="/cart">
-            <Cart addToCart={this.addToCart} cartItems={this.state.cartItems} updateCartItem={this.updateCartItem} removingCartItem={this.removingCartItem} />
-          </Route>
-          <Route path="/sandbox" exact component={Sandbox}></Route>
+          <AppliedRoute
+            exact
+            path="/"
+            component={Home}
+            appProps={this.props.appProps}
+          />
+          <AppliedRoute
+            exact
+            path="/login"
+            component={Login}
+            appProps={this.props.appProps}
+          />
+          <AppliedRoute
+            exact
+            path="/login"
+            component={Login}
+            handleLogout={this.props.handleLogout}
+            appProps={this.props.appProps}
+          />
+          <AppliedRoute path="/menu" appProps={this.props.appProps}>
+            <Menu addToCart={this.addToCart} />
+          </AppliedRoute>
+          <AppliedRoute
+            path="/specials"
+            component={Specials}
+            appProps={this.props.appProps}
+          />
+          <AppliedRoute path="/contact">
+            <Contact env={this.props.env} appProps={this.props.appProps} />
+          </AppliedRoute>
+          <AppliedRoute path="/cart">
+            <Cart
+              addToCart={this.addToCart}
+              cartItems={this.state.cartItems}
+              updateCartItem={this.updateCartItem}
+              removingCartItem={this.removingCartItem}
+              appProps={this.props.appProps}
+            />
+          </AppliedRoute>
+          <AppliedRoute
+            path="/sandbox"
+            exact
+            component={Sandbox}
+            appProps={this.props.appProps}
+          ></AppliedRoute>
         </Switch>
       </main>
     );
