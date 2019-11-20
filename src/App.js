@@ -1,9 +1,9 @@
 import "./App.css";
 import Header from "./Header";
 import Main from "./Main";
-import { BrowserRouter } from "react-router-dom";
 import React, { useState } from "react";
 import { Auth } from "aws-amplify";
+import { withRouter } from "react-router-dom";
 
 function App(props) {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -13,28 +13,26 @@ function App(props) {
 
     setIsAuthenticated(false);
 
-    // props.history.push("/login");
+    props.history.push("/login");
   }
   return (
     <div>
-      <BrowserRouter>
-        <Header
-          appProps={{
-            isAuthenticated,
-            setIsAuthenticated,
-            isAuthenticating,
-            setIsAuthenticating
-          }}
-          handleLogout={handleLogout}
-        />
-        <Main
-          env={props.env}
-          appProps={{ isAuthenticated, setIsAuthenticated }}
-          handleLogout={handleLogout}
-        />
-      </BrowserRouter>
+      <Header
+        appProps={{
+          isAuthenticated,
+          setIsAuthenticated,
+          isAuthenticating,
+          setIsAuthenticating
+        }}
+        handleLogout={handleLogout}
+      />
+      <Main
+        env={props.env}
+        appProps={{ isAuthenticated, setIsAuthenticated }}
+        handleLogout={handleLogout}
+      />
     </div>
   );
 }
 
-export default App;
+export default withRouter(App);

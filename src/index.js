@@ -6,7 +6,7 @@ import env from "./config";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Amplify from "aws-amplify";
 import config from "./configAWS";
-// import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter } from "react-router-dom";
 Amplify.configure({
   Auth: {
     mandatorySignIn: true,
@@ -35,7 +35,9 @@ console.log("env", env);
 console.log("config", config);
 
 ReactDOM.render(
-  <App env={env} />,
+  <BrowserRouter>
+    <App env={env} />
+  </BrowserRouter>,
 
   document.getElementById("root")
 );

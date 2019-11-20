@@ -7,6 +7,7 @@ import Specials from "./Specials.js";
 import Sandbox from "./sandbox";
 import Cart from "./Cart";
 import Login from "./containers/Login";
+import Signup from "./containers/Signup";
 import AppliedRoute from "./components/AppliedRoute";
 import { NavItem } from "react-bootstrap";
 
@@ -66,8 +67,8 @@ class Main extends React.Component {
           />
           <AppliedRoute
             exact
-            path="/login"
-            component={Login}
+            path="/signup"
+            component={Signup}
             appProps={this.props.appProps}
           />
           <AppliedRoute

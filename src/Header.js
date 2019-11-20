@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, withRouter } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Nav, Navbar, NavItem, Card } from "react-bootstrap";
 import { Auth } from "aws-amplify";
@@ -44,13 +44,15 @@ function Header(props) {
           </Nav.Link>
         </Nav>
         {props.appProps.isAuthenticated ? (
-          <Nav.Link onClick={props.handleLogout}>Logout</Nav.Link>
+          <Nav.Link className="text-right" onClick={props.handleLogout}>
+            Logout
+          </Nav.Link>
         ) : (
           <>
-            <Nav.Link href="/login">
-              <Link to="./login">Signup</Link>
+            <Nav.Link className="text-right" href="/signup">
+              <Link to="./signup">Signup</Link>
             </Nav.Link>
-            <Nav.Link href="/login">
+            <Nav.Link className="text-right" href="/login">
               <Link to="./login">Login</Link>
             </Nav.Link>
           </>
@@ -59,4 +61,4 @@ function Header(props) {
     </Navbar>
   );
 }
-export default withRouter(Header);
+export default Header;
