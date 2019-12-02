@@ -6,6 +6,7 @@ import { Auth } from "aws-amplify";
 import { withRouter } from "react-router-dom";
 
 function App(props) {
+  console.log("App props: ", props);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isAuthenticating, setIsAuthenticating] = useState(true);
   async function handleLogout() {
@@ -30,6 +31,7 @@ function App(props) {
         env={props.env}
         appProps={{ isAuthenticated, setIsAuthenticated }}
         handleLogout={handleLogout}
+        history={props.history}
       />
     </div>
   );

@@ -26,6 +26,11 @@ Amplify.configure({
         name: "rest-api",
         endpoint: config.apiGateway.URL,
         region: config.apiGateway.REGION
+      },
+      {
+        name: "stripe",
+        endpoint: "https://otihxshkpe.execute-api.us-east-1.amazonaws.com/dev",
+        region: "us-east-1"
       }
     ]
   }

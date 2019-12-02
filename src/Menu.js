@@ -16,7 +16,12 @@ class Menu extends React.Component {
     console.log("Response: ", response);
     this.setState({ notes: response });
   }
-
+  async saveNote(props) {
+    console.log("propsofnote:", props);
+    let res = await API.put("rest-api", `/notes/${props._id}`);
+    console.log("this:", this);
+    this.setState({ notes: res });
+  }
   render() {
     return (
       <div>
@@ -41,7 +46,7 @@ class Menu extends React.Component {
                   key={keyIndex}
                   addToCart={this.props.addToCart}
                   removingCartItems={this.props.removingCartItems}
-                  cartItem
+                  saveNote={this.saveNote}
                 />
               );
             })}

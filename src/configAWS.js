@@ -7,7 +7,7 @@ export default {
     REGION: "us-east-1",
     URL: "https://z9scqd7r37.execute-api.us-east-1.amazonaws.com/dev"
   },
-  STRIPE_KEY: "sk_test_pLeLwpLLX7IGrqg8Uqs997Rm00senAhVat",
+  STRIPE_KEY: "pk_test_YrkVfvkXfJctnYa9FTd6Y3P300w066reEG",
   cognito: {
     REGION: "us-east-1",
     USER_POOL_ID: "us-east-1_syH1siLmi",

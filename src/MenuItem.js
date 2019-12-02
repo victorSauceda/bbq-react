@@ -10,6 +10,7 @@ import {
   Row,
   Form
 } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 class MenuItem extends React.Component {
   constructor(props) {
@@ -32,7 +33,7 @@ class MenuItem extends React.Component {
     };
     const marging = {
       marginBottom: "15px",
-      height: "40rem"
+      height: "50rem"
     };
     const { item } = this.props;
     return (
@@ -90,7 +91,8 @@ class MenuItem extends React.Component {
             >
               Add to cart
             </Button>
-            <Button
+
+            {/* <Button
               variant="secondary"
               size="lg"
               block
@@ -99,7 +101,7 @@ class MenuItem extends React.Component {
               }
             >
               remove from cart
-            </Button>
+            </Button> */}
           </Card.Body>
         </Card>
       </Col>

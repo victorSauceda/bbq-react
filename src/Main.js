@@ -1,6 +1,6 @@
 import React from "react";
 import { Switch, Link } from "react-router-dom";
-import Home from "./Home";
+// import Home from "./Home";
 import Menu from "./Menu";
 import Contact from "./Contact";
 import Specials from "./Specials.js";
@@ -8,8 +8,10 @@ import Sandbox from "./sandbox";
 import Cart from "./Cart";
 import Login from "./containers/Login";
 import Signup from "./containers/Signup";
+import Settings from "./containers/Settings";
 import AppliedRoute from "./components/AppliedRoute";
 import { NavItem } from "react-bootstrap";
+import Checkout from "./containers/Checkout";
 
 class Main extends React.Component {
   constructor(props) {
@@ -59,12 +61,17 @@ class Main extends React.Component {
     return (
       <main>
         <Switch>
-          <AppliedRoute
-            exact
-            path="/"
-            component={Home}
-            appProps={this.props.appProps}
-          />
+          <AppliedRoute exact path="/" appProps={this.props.appProps}>
+            <Menu addToCart={this.addToCart} />
+          </AppliedRoute>
+          <AppliedRoute path="/settings">
+            <Settings
+              exact
+              cartItems={this.state.cartItems}
+              component={Settings}
+              appProps={this.props.appProps}
+            />
+          </AppliedRoute>
           <AppliedRoute
             exact
             path="/signup"
@@ -78,9 +85,9 @@ class Main extends React.Component {
             handleLogout={this.props.handleLogout}
             appProps={this.props.appProps}
           />
-          <AppliedRoute path="/menu" appProps={this.props.appProps}>
+          {/* <AppliedRoute path="/menu" appProps={this.props.appProps}>
             <Menu addToCart={this.addToCart} />
-          </AppliedRoute>
+          </AppliedRoute> */}
           <AppliedRoute
             path="/specials"
             component={Specials}
@@ -96,6 +103,7 @@ class Main extends React.Component {
               updateCartItem={this.updateCartItem}
               removingCartItem={this.removingCartItem}
               appProps={this.props.appProps}
+              history={this.props.history}
             />
           </AppliedRoute>
           <AppliedRoute
@@ -104,6 +112,14 @@ class Main extends React.Component {
             component={Sandbox}
             appProps={this.props.appProps}
           ></AppliedRoute>
+
+          <AppliedRoute path="/checkout">
+            <Checkout
+              component={Checkout}
+              cartItems={this.state.cartItems}
+              appProps={this.props.appProps}
+            />
+          </AppliedRoute>
         </Switch>
       </main>
     );
